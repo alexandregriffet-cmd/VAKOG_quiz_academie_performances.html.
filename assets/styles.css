@@ -1,61 +1,65 @@
-/* Identique à V1, sans changement spécifique au retrait JSON */ 
-:root {
-  --bg: #0f1216;
-  --card: #161a20;
-  --ink: #e6e9ef;
-  --sub: #a9b0bd;
-  --accent: #4ba3ff;
-  --muted: #232834;
-  --border: #2a3040;
+/* CMP-like dark corporate theme — V3.1 (centered logo on results) */
+:root{
+  --bg:#0e1116;--ink:#e7ebf2;--muted:#a7b0c0;--card:#141a22;--edge:#242c39;--brand:#49a3ff;--accent:#8dd0ff;
 }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
 
-* { box-sizing: border-box; }
+.container{width:min(980px,92vw);margin:1.25rem auto}
+.banner{background:linear-gradient(90deg,#0d131d,#0c1726);border-bottom:1px solid var(--edge);padding:.6rem 0}
+.brand{display:flex;align-items:center;gap:1rem}
+.logo{width:56px;height:auto}
+.logo.center{display:block;margin:0 auto .35rem auto}
+.brand-text h1{font-size:clamp(1.2rem,2.4vw,1.8rem);margin:0}
+.subtitle{color:var(--muted);margin:.15rem 0 0}
+.card{background:var(--card);border:1px solid var(--edge);border-radius:.9rem;padding:1.1rem}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-}
+h2{margin:.25rem 0 .5rem}
+.muted{color:var(--muted)}
 
-.container { width: min(950px, 92vw); margin: 1.5rem auto; }
-header h1 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 2.5vw + 1rem, 2.4rem); }
-.lede { color: var(--sub); margin-top: .25rem; }
+.bullets{margin:.25rem 0 .75rem}
+.bullets li{margin:.25rem 0}
 
-.note { margin-top: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1rem; }
-main section { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1rem; }
+.screen.hidden{display:none}
 
-#questions .item { display: grid; gap: .4rem; padding: .75rem; margin-bottom: .5rem; border: 1px solid var(--border); border-radius: .5rem; background: linear-gradient(180deg, rgba(255,255,255,.02), transparent); }
-#questions .item h3 { font-size: 1rem; margin: 0; }
+.progress{position:relative;height:10px;background:#0f131a;border:1px solid var(--edge);border-radius:999px;margin-bottom:.75rem}
+.progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--accent));border-radius:999px;transition:width .25s ease}
+.progress-text{display:block;margin-top:.35rem;color:var(--muted);font-size:.95rem}
 
-.scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: .35rem; margin-top: .35rem; }
-.scale label { text-align: center; font-size: .9rem; color: var(--sub); }
-.scale input[type="radio"] { display: none; }
-.scale .pill { display: block; padding: .5rem .25rem; background: var(--muted); border: 1px solid var(--border); border-radius: .5rem; cursor: pointer; user-select: none; }
-.scale input[type="radio"]:checked + .pill { outline: 2px solid var(--accent); border-color: var(--accent); }
+.question-box{margin-top:.5rem;background:linear-gradient(180deg, rgba(255,255,255,.02), transparent);border:1px solid var(--edge);border-radius:.75rem;padding:1rem}
+#questionText{margin:.25rem 0 .25rem;font-size:1.15rem}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:.75rem}
+.scale input[type=radio]{display:none}
+.scale label{display:block;text-align:center;background:#18212d;border:1px solid var(--edge);padding:.8rem .25rem;border-radius:.6rem;cursor:pointer;font-weight:600}
+.scale input[type=radio]:checked + label{outline:2px solid var(--brand);border-color:var(--brand)}
+.scale-legend{display:flex;justify-content:space-between;color:var(--muted);gap:.25rem;margin-top:.5rem;font-size:.9rem}
 
-.actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
-.actions .secondary { background: transparent; border: 1px solid var(--border); }
+.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+button{border:none;border-radius:.7rem;padding:.8rem 1.1rem;font-weight:700;cursor:pointer}
+.primary{background:var(--brand);color:#07131f}
+.secondary{background:transparent;border:1px solid var(--edge);color:var(--ink)}
 
-button { background: var(--accent); color: #0b0f14; border: none; border-radius: .6rem; padding: .7rem 1rem; font-weight: 600; cursor: pointer; }
-button:hover { filter: brightness(1.07); }
+.results-header{margin-bottom:.5rem;text-align:center}
+.chart-wrap{margin:1rem 0;background:#10161f;border:1px solid var(--edge);border-radius:.75rem;padding:1rem;text-align:center}
+canvas{max-width:100%;height:auto}
 
-.hidden { display: none; }
+.score-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;margin:1rem 0}
+.card-mini{background:#121a24;border:1px solid var(--edge);border-radius:.6rem;padding:.75rem}
+.card-mini h4{margin:.1rem 0 .25rem}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:999px;border:1px solid var(--edge);color:var(--muted)}
 
-.score-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .75rem; margin: 1rem 0; }
-.card { background: var(--muted); border: 1px solid var(--border); border-radius: .6rem; padding: .75rem; }
-.card h4 { margin: 0 0 .25rem; }
+.note{margin-top:.75rem;background:#121821;border:1px solid var(--edge);border-radius:.6rem;padding:.75rem}
 
-.badge { display: inline-block; padding: .15rem .5rem; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--sub); font-size: .8rem; }
-.summary { margin: .5rem 0 1rem; color: var(--ink); }
+.small{font-size:.92rem}
 
-footer { margin: 2rem 0; color: var(--sub); }
-.small { font-size: .9rem; }
-
-@media print {
-  body { background: #fff; color: #111; }
-  .note, .actions button#copyLinkBtn { display: none !important; }
-  a, button { color: #111 !important; }
+/* Print: A4 calibration */
+@page{size:A4;margin:12mm}
+@media print{
+  .no-print{display:none !important}
+  body{background:#fff;color:#111}
+  .card, .chart-wrap, .note{border-color:#ccc}
+  canvas{max-width:100%; height:auto}
+  .score-cards{grid-template-columns:repeat(2, 1fr)}
+  .results-header{text-align:center}
+  .logo{width:64px;height:auto}
 }

@@ -3,62 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Test VAKOG – Préférences d’apprentissage</title>
-  <meta name="description" content="Questionnaire gratuit en français pour découvrir vos préférences d’apprentissage VAKOG (Visuel, Auditif, Kinesthésique, Olfactif, Gustatif). 100% local, aucune donnée collectée." />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <title>VAKOG — Préférences d’apprentissage | Académie de performances</title>
+  <meta name="description" content="Questionnaire VAKOG en français — une question à la fois, résultats avec graphique, export PDF A4. Aucune donnée collectée." />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <header class="container">
-    <h1>Test VAKOG – Préférences d’apprentissage</h1>
-    <p class="lede">
-      Déterminez vos canaux sensoriels préférés pour apprendre : <strong>Visuel</strong>, <strong>Auditif</strong>, <strong>Kinesthésique</strong>,
-      <strong>Olfactif</strong> et <strong>Gustatif</strong>.
-      <br/>Durée : 4 à 6 minutes • 25 affirmations • Échelle de 1 (Pas du tout) à 5 (Tout à fait).
-    </p>
-    <details class="note">
-      <summary>À propos et bonnes pratiques</summary>
-      <p><strong>Important :</strong> Les « styles/préférences d’apprentissage » ne sont pas des cases fixes. Le résultat indique des préférences actuelles, pas des capacités. La variété des méthodes et la flexibilité restent essentielles.</p>
-      <p>Ce test est 100% local (aucune donnée transmise). Vous pouvez exporter vos résultats en PDF.</p>
-    </details>
+  <header class="banner no-print">
+    <div class="brand container">
+      <img src="assets/logo.jpeg" alt="Académie de performances — logo" class="logo" />
+      <div class="brand-text">
+        <h1>Préférences d’apprentissage — Test VAKOG</h1>
+        <p class="subtitle">Académie de performances • Coaching mental & apprentissages</p>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <form id="quiz" novalidate>
-      <section id="questions"></section>
-      <div class="actions">
-        <button type="submit" id="submitBtn">Calculer mes résultats</button>
-        <button type="button" id="resetBtn" class="secondary">Réinitialiser</button>
-      </div>
-    </form>
+  <main class="container card">
+    <section id="intro" class="screen">
+      <h2>Bienvenue</h2>
+      <p>Répondez à <strong>25 affirmations</strong> (échelle 1–5). Nous affichons ensuite vos <strong>préférences d’apprentissage</strong> sous forme de graphique et de conseils pratiques.</p>
+      <ul class="bullets">
+        <li>Durée : 4–6 minutes</li>
+        <li>1 question à la fois</li>
+        <li>Aucune donnée transmise (tout reste sur votre appareil)</li>
+      </ul>
+      <button id="startBtn" class="primary">Commencer le test</button>
+    </section>
 
-    <section id="results" class="hidden">
-      <h2>Résultats</h2>
-      <canvas id="radar" width="400" height="400" aria-label="Graphique radar des scores VAKOG" role="img"></canvas>
+    <section id="quizScreen" class="screen hidden">
+      <div class="progress no-print" aria-live="polite">
+        <div id="progressBar" class="bar"></div>
+        <span id="progressText" class="progress-text">Question 1/25</span>
+      </div>
+
+      <div id="questionBox" class="question-box">
+        <h3 id="questionText">Question</h3>
+        <div class="scale" role="radiogroup" aria-label="Échelle de 1 à 5"></div>
+        <div class="scale-legend">
+          <span>1 Pas du tout</span>
+          <span>2 Plutôt non</span>
+          <span>3 Mitigé·e</span>
+          <span>4 Plutôt oui</span>
+          <span>5 Tout à fait</span>
+        </div>
+      </div>
+
+      <div class="actions no-print">
+        <button id="prevBtn" class="secondary">Précédent</button>
+        <button id="nextBtn" class="primary">Suivant</button>
+        <button id="finishBtn" class="primary hidden">Obtenir le résultat</button>
+      </div>
+    </section>
+
+    <section id="results" class="screen hidden">
+      <div class="results-header centered-header">
+        <img src="assets/logo.jpeg" alt="Académie de performances — logo" class="logo center" />
+        <h2>Résultats VAKOG</h2>
+        <p class="muted">Moyennes sur 5 — interprétation et conseils ci-dessous.</p>
+      </div>
+
+      <figure class="chart-wrap">
+        <canvas id="radar" width="900" height="900" aria-label="Graphique radar des scores VAKOG" role="img"></canvas>
+        <figcaption>Graphique radar (1–5)</figcaption>
+      </figure>
 
       <div class="score-cards" id="scoreCards"></div>
 
       <h3>Interprétation rapide</h3>
       <p id="summaryText" class="summary"></p>
 
-      <div class="actions gutter">
-        <button type="button" id="exportPdfBtn">Exporter en PDF</button>
-        <button type="button" id="copyLinkBtn" class="secondary">Copier un lien de partage (sans données)</button>
-      </div>
-
       <details class="note">
-        <summary>Conseils pratiques pour apprendre selon vos préférences</summary>
+        <summary>Conseils pratiques personnalisés</summary>
         <div id="advice"></div>
       </details>
+
+      <div class="actions no-print">
+        <button id="exportPdfBtn" class="primary">Exporter en PDF (A4)</button>
+        <button id="restartBtn" class="secondary">Recommencer</button>
+      </div>
     </section>
   </main>
 
-  <footer class="container small">
-    <p>© 2025 – Test VAKOG (FR). Licence MIT. Aucune donnée collectée. <a href="#" id="printLink">Imprimer</a></p>
+  <footer class="container small no-print">
+    <p>© 2025 Académie de performances — Test VAKOG (FR) • Licence MIT • Aucune donnée collectée.</p>
   </footer>
 
-  <!-- Chart.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha256-OqZkz1V7mGKnkPPE2eF/w3lNtIv5jJriW3o9n8o1mGo=" crossorigin="anonymous"></script>
   <script src="assets/script.js"></script>
 </body>

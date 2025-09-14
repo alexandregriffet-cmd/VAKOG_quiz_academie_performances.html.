@@ -1,25 +1,13 @@
-# Test VAKOG – Préférences d’apprentissage (FR) — V2 (sans export JSON)
+# Test VAKOG — V3.1 (FR) • Logo centré résultats (écran + PDF)
 
-Questionnaire (25 items, échelle 1–5) pour estimer vos **préférences VAKOG** : Visuel, Auditif, Kinesthésique, Olfactif, Gustatif.
+- **Logo** : centré au-dessus du titre dans la page de résultats, y compris en **impression/PDF A4**.
+- **Interaction** : 1 question à la fois (Précédent/Suivant), pas de libellé VAKOG dans les questions.
+- **Résultats** : radar + cartes de conseils + interprétation.
+- **Export** : **PDF A4** (print CSS calibré, sans coupe).
 
-- **100 % côté client** : aucune donnée collectée, tout se fait dans le navigateur.
-- **Exports** : **PDF uniquement** (impression). *(L’export JSON a été retiré dans cette V2.)*
-- **Affichage** : graphique radar (Chart.js via CDN).
-- **Langue** : français.
+## Déploiement
+1. Déposez tous les fichiers à la racine d’un dépôt public.
+2. Activez **Settings → Pages** → Deploy from a branch → `main` (root).
 
-## Déploiement sur GitHub Pages
-
-1. Créez un nouveau dépôt **public** (par ex. `vakog-test-fr`).
-2. Uploadez tous les fichiers à la racine du dépôt.
-3. Activez **Settings → Pages** → “Deploy from a branch” → `main` (root).
-4. L’URL sera du type `https://<votre-compte>.github.io/vakog-test-fr/`.
-
-## Utilisation
-
-- Répondez aux 25 affirmations → **Calculer mes résultats**.
-- Lisez les **moyennes** par modalité et l’**interprétation**.
-- Exportez en **PDF** si besoin (via impression).
-
-## Licence
-
-MIT © 2025
+## Logo
+Le logo fourni a été intégré dans `assets/logo.jpeg` et utilisé en **bannière** et **en-tête de résultats** (centré).
