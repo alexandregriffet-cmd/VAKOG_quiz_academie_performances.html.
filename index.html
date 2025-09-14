@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test VAKOG – Préférences d’apprentissage</title>
+  <meta name="description" content="Questionnaire gratuit en français pour découvrir vos préférences d’apprentissage VAKOG (Visuel, Auditif, Kinesthésique, Olfactif, Gustatif). 100% local, aucune donnée collectée." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+</head>
+<body>
+  <header class="container">
+    <h1>Test VAKOG – Préférences d’apprentissage</h1>
+    <p class="lede">
+      Déterminez vos canaux sensoriels préférés pour apprendre : <strong>Visuel</strong>, <strong>Auditif</strong>, <strong>Kinesthésique</strong>,
+      <strong>Olfactif</strong> et <strong>Gustatif</strong>.
+      <br/>Durée : 4 à 6 minutes • 25 affirmations • Échelle de 1 (Pas du tout) à 5 (Tout à fait).
+    </p>
+    <details class="note">
+      <summary>À propos et bonnes pratiques</summary>
+      <p><strong>Important :</strong> Les « styles/préférences d’apprentissage » ne sont pas des cases fixes. Le résultat indique des préférences actuelles, pas des capacités. La variété des méthodes et la flexibilité restent essentielles.</p>
+      <p>Ce test est 100% local (aucune donnée transmise). Vous pouvez exporter vos résultats en PDF.</p>
+    </details>
+  </header>
+
+  <main class="container">
+    <form id="quiz" novalidate>
+      <section id="questions"></section>
+      <div class="actions">
+        <button type="submit" id="submitBtn">Calculer mes résultats</button>
+        <button type="button" id="resetBtn" class="secondary">Réinitialiser</button>
+      </div>
+    </form>
+
+    <section id="results" class="hidden">
+      <h2>Résultats</h2>
+      <canvas id="radar" width="400" height="400" aria-label="Graphique radar des scores VAKOG" role="img"></canvas>
+
+      <div class="score-cards" id="scoreCards"></div>
+
+      <h3>Interprétation rapide</h3>
+      <p id="summaryText" class="summary"></p>
+
+      <div class="actions gutter">
+        <button type="button" id="exportPdfBtn">Exporter en PDF</button>
+        <button type="button" id="copyLinkBtn" class="secondary">Copier un lien de partage (sans données)</button>
+      </div>
+
+      <details class="note">
+        <summary>Conseils pratiques pour apprendre selon vos préférences</summary>
+        <div id="advice"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="container small">
+    <p>© 2025 – Test VAKOG (FR). Licence MIT. Aucune donnée collectée. <a href="#" id="printLink">Imprimer</a></p>
+  </footer>
+
+  <!-- Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha256-OqZkz1V7mGKnkPPE2eF/w3lNtIv5jJriW3o9n8o1mGo=" crossorigin="anonymous"></script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
