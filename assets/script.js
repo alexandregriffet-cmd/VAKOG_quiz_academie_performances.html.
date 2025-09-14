@@ -1,4 +1,4 @@
-// V3.1 — centered logo on results (screen + print)
+// V3.2 — light theme & fixes
 const ITEMS = [
   { id: "V1", mod: "Visuel", text: "Je retiens mieux avec des schémas, cartes mentales ou tableaux."},
   { id: "V2", mod: "Visuel", text: "J’aime surligner et coder les informations par couleur."},
@@ -66,18 +66,22 @@ function showScreen(id){ document.querySelectorAll(".screen").forEach(s=>s.class
 
 function startQuiz(){ index=0; showScreen("quizScreen"); renderCurrent(); }
 
+function updateProgress(){
+  const pct = Math.round(((index+1)/ITEMS.length)*100);
+  qs("#progressBar").style.width = pct + "%";
+  qs("#progressText").textContent = `Question ${index+1}/${ITEMS.length}`;
+}
+
 function renderCurrent(){
   const item = ITEMS[index];
-  qs("#progressText").textContent = `Question ${index+1}/${ITEMS.length}`;
-  const pct = Math.round((index/ITEMS.length)*100);
-  qs("#progressBar").style.width = pct + "%";
+  updateProgress();
   qs("#questionText").textContent = item.text;
 
   const scale = qs("#quizScreen .scale");
   scale.innerHTML = "";
   for(let v=1; v<=5; v++){
     const rid = `${item.id}_${v}`;
-    const input = el("input", {type:"radio", id:rid, name:"likert", value:String(v)});
+    const input = el("input", {type:"radio", id:rid, name:"likert", value:String(v), tabindex:"0"});
     const label = el("label", {for:rid}, String(v));
     scale.appendChild(input); scale.appendChild(label);
   }
@@ -146,7 +150,7 @@ function finish(){
   renderChart(means); renderCards(means);
   qs("#summaryText").textContent = summarize(means);
   showScreen("results");
-  try{ localStorage.setItem("vakog_results_v3_1", JSON.stringify({ ts:new Date().toISOString(), answers, means })); }catch{}
+  try{ localStorage.setItem("vakog_results_v3_2", JSON.stringify({ ts:new Date().toISOString(), answers, means })); }catch{}
 }
 
 function exportPDF(){ window.print(); }

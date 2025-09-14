@@ -1,65 +1,62 @@
-/* CMP-like dark corporate theme — V3.1 (centered logo on results) */
+/* V3.2 — Thème clair, logo centré, bouton final corrigé, A4 print */
 :root{
-  --bg:#0e1116;--ink:#e7ebf2;--muted:#a7b0c0;--card:#141a22;--edge:#242c39;--brand:#49a3ff;--accent:#8dd0ff;
+  --bg:#f6f8fb; --surface:#ffffff; --ink:#0f1725; --muted:#5b687a;
+  --edge:#e6e9ef; --brand:#1287da; --brand-2:#6ec3ff; --focus:#0ea5e9;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
 
 .container{width:min(980px,92vw);margin:1.25rem auto}
-.banner{background:linear-gradient(90deg,#0d131d,#0c1726);border-bottom:1px solid var(--edge);padding:.6rem 0}
-.brand{display:flex;align-items:center;gap:1rem}
-.logo{width:56px;height:auto}
-.logo.center{display:block;margin:0 auto .35rem auto}
-.brand-text h1{font-size:clamp(1.2rem,2.4vw,1.8rem);margin:0}
-.subtitle{color:var(--muted);margin:.15rem 0 0}
-.card{background:var(--card);border:1px solid var(--edge);border-radius:.9rem;padding:1.1rem}
 
-h2{margin:.25rem 0 .5rem}
-.muted{color:var(--muted)}
+.hero{background:linear-gradient(180deg,#ffffff, #f2f6fb);border-bottom:1px solid var(--edge);padding:1.25rem 0}
+.hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem}
+.logo-hero{width:120px;height:auto;object-fit:contain}
+h1{margin:.15rem 0;font-size:clamp(1.35rem,2.8vw,2rem)}
+.subtitle{color:var(--muted);margin:0}
 
-.bullets{margin:.25rem 0 .75rem}
-.bullets li{margin:.25rem 0}
+.card{background:var(--surface);border:1px solid var(--edge);border-radius:.9rem;padding:1.1rem;box-shadow:0 4px 18px rgba(16,23,40,.05)}
 
 .screen.hidden{display:none}
 
-.progress{position:relative;height:10px;background:#0f131a;border:1px solid var(--edge);border-radius:999px;margin-bottom:.75rem}
-.progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--accent));border-radius:999px;transition:width .25s ease}
-.progress-text{display:block;margin-top:.35rem;color:var(--muted);font-size:.95rem}
+.progress{height:10px;background:#eef2f8;border:1px solid var(--edge);border-radius:999px;margin-bottom:.5rem}
+.progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:999px;transition:width .25s ease}
+.progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.progress-text{color:var(--muted);font-size:.95rem}
 
-.question-box{margin-top:.5rem;background:linear-gradient(180deg, rgba(255,255,255,.02), transparent);border:1px solid var(--edge);border-radius:.75rem;padding:1rem}
-#questionText{margin:.25rem 0 .25rem;font-size:1.15rem}
-.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:.75rem}
+.question-box{margin-top:.25rem;background:linear-gradient(180deg, rgba(0,0,0,.02), transparent);border:1px solid var(--edge);border-radius:.75rem;padding:1rem}
+#questionText{margin:.25rem 0 .25rem;font-size:1.25rem}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-top:.75rem}
 .scale input[type=radio]{display:none}
-.scale label{display:block;text-align:center;background:#18212d;border:1px solid var(--edge);padding:.8rem .25rem;border-radius:.6rem;cursor:pointer;font-weight:600}
-.scale input[type=radio]:checked + label{outline:2px solid var(--brand);border-color:var(--brand)}
+.scale label{display:block;text-align:center;background:#f3f7fb;border:1px solid var(--edge);padding:1rem .25rem;border-radius:.6rem;cursor:pointer;font-weight:700}
+.scale input[type=radio]:checked + label{outline:2px solid var(--focus);border-color:var(--focus);background:#e7f5ff}
 .scale-legend{display:flex;justify-content:space-between;color:var(--muted);gap:.25rem;margin-top:.5rem;font-size:.9rem}
 
-.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
-button{border:none;border-radius:.7rem;padding:.8rem 1.1rem;font-weight:700;cursor:pointer}
-.primary{background:var(--brand);color:#07131f}
-.secondary{background:transparent;border:1px solid var(--edge);color:var(--ink)}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+.btn{border:none;border-radius:.7rem;padding:.85rem 1.15rem;font-weight:800;cursor:pointer;background:#e9edf3;color:#0f1725}
+.btn:hover{filter:brightness(0.98)}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.ghost{background:#fff;border:1px solid var(--edge);color:#0f1725}
+.btn.wide{min-width:260px}
 
-.results-header{margin-bottom:.5rem;text-align:center}
-.chart-wrap{margin:1rem 0;background:#10161f;border:1px solid var(--edge);border-radius:.75rem;padding:1rem;text-align:center}
+.centered{text-align:center}
+.logo-results{width:120px;height:auto;display:block;margin:0 auto .35rem auto}
+
+.chart-wrap{margin:1rem 0;background:#fff;border:1px solid var(--edge);border-radius:.75rem;padding:1rem;text-align:center}
 canvas{max-width:100%;height:auto}
 
 .score-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;margin:1rem 0}
-.card-mini{background:#121a24;border:1px solid var(--edge);border-radius:.6rem;padding:.75rem}
+.card-mini{background:#fff;border:1px solid var(--edge);border-radius:.6rem;padding:.75rem;box-shadow:0 3px 12px rgba(16,23,40,.04)}
 .card-mini h4{margin:.1rem 0 .25rem}
-.badge{display:inline-block;padding:.15rem .5rem;border-radius:999px;border:1px solid var(--edge);color:var(--muted)}
+.note{margin-top:.75rem;background:#fff;border:1px solid var(--edge);border-radius:.6rem;padding:.75rem}
 
-.note{margin-top:.75rem;background:#121821;border:1px solid var(--edge);border-radius:.6rem;padding:.75rem}
-
-.small{font-size:.92rem}
+.small{font-size:.92rem;color:var(--muted)}
 
 /* Print: A4 calibration */
 @page{size:A4;margin:12mm}
 @media print{
   .no-print{display:none !important}
   body{background:#fff;color:#111}
-  .card, .chart-wrap, .note{border-color:#ccc}
+  .card, .chart-wrap, .note{border-color:#ccc; box-shadow:none}
   canvas{max-width:100%; height:auto}
   .score-cards{grid-template-columns:repeat(2, 1fr)}
-  .results-header{text-align:center}
-  .logo{width:64px;height:auto}
 }

@@ -3,43 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VAKOG — Préférences d’apprentissage | Académie de performances</title>
+  <title>Préférences d’apprentissage — Test VAKOG | Académie de performances</title>
   <meta name="description" content="Questionnaire VAKOG en français — une question à la fois, résultats avec graphique, export PDF A4. Aucune donnée collectée." />
+  <link rel="stylesheet" href="assets/styles.css" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <header class="banner no-print">
-    <div class="brand container">
-      <img src="assets/logo.jpeg" alt="Académie de performances — logo" class="logo" />
-      <div class="brand-text">
-        <h1>Préférences d’apprentissage — Test VAKOG</h1>
-        <p class="subtitle">Académie de performances • Coaching mental & apprentissages</p>
-      </div>
+  <header class="hero no-print">
+    <div class="container hero-inner">
+      <img src="assets/logo.jpeg" alt="Logo Académie de performances" class="logo-hero" />
+      <h1>Préférences d’apprentissage — Test VAKOG</h1>
+      <p class="subtitle">Académie de performances • Coaching mental & apprentissages</p>
     </div>
   </header>
 
   <main class="container card">
     <section id="intro" class="screen">
-      <h2>Bienvenue</h2>
       <p>Répondez à <strong>25 affirmations</strong> (échelle 1–5). Nous affichons ensuite vos <strong>préférences d’apprentissage</strong> sous forme de graphique et de conseils pratiques.</p>
       <ul class="bullets">
         <li>Durée : 4–6 minutes</li>
         <li>1 question à la fois</li>
         <li>Aucune donnée transmise (tout reste sur votre appareil)</li>
       </ul>
-      <button id="startBtn" class="primary">Commencer le test</button>
+      <button id="startBtn" class="btn primary">Commencer le test</button>
     </section>
 
-    <section id="quizScreen" class="screen hidden">
-      <div class="progress no-print" aria-live="polite">
+    <section id="quizScreen" class="screen hidden" aria-live="polite">
+      <div class="progress no-print" aria-hidden="true">
         <div id="progressBar" class="bar"></div>
+      </div>
+      <div class="progress-row">
         <span id="progressText" class="progress-text">Question 1/25</span>
       </div>
 
       <div id="questionBox" class="question-box">
-        <h3 id="questionText">Question</h3>
+        <h2 id="questionText">Question</h2>
         <div class="scale" role="radiogroup" aria-label="Échelle de 1 à 5"></div>
         <div class="scale-legend">
           <span>1 Pas du tout</span>
@@ -51,15 +50,15 @@
       </div>
 
       <div class="actions no-print">
-        <button id="prevBtn" class="secondary">Précédent</button>
-        <button id="nextBtn" class="primary">Suivant</button>
-        <button id="finishBtn" class="primary hidden">Obtenir le résultat</button>
+        <button id="prevBtn" class="btn ghost">Précédent</button>
+        <button id="nextBtn" class="btn">Suivant</button>
+        <button id="finishBtn" class="btn primary wide hidden">Obtenir le résultat</button>
       </div>
     </section>
 
     <section id="results" class="screen hidden">
-      <div class="results-header centered-header">
-        <img src="assets/logo.jpeg" alt="Académie de performances — logo" class="logo center" />
+      <div class="results-header centered">
+        <img src="assets/logo.jpeg" alt="Logo Académie de performances" class="logo-results" />
         <h2>Résultats VAKOG</h2>
         <p class="muted">Moyennes sur 5 — interprétation et conseils ci-dessous.</p>
       </div>
@@ -72,7 +71,7 @@
       <div class="score-cards" id="scoreCards"></div>
 
       <h3>Interprétation rapide</h3>
-      <p id="summaryText" class="summary"></p>
+        <p id="summaryText" class="summary"></p>
 
       <details class="note">
         <summary>Conseils pratiques personnalisés</summary>
@@ -80,8 +79,8 @@
       </details>
 
       <div class="actions no-print">
-        <button id="exportPdfBtn" class="primary">Exporter en PDF (A4)</button>
-        <button id="restartBtn" class="secondary">Recommencer</button>
+        <button id="exportPdfBtn" class="btn primary">Exporter en PDF (A4)</button>
+        <button id="restartBtn" class="btn ghost">Recommencer</button>
       </div>
     </section>
   </main>
@@ -90,7 +89,7 @@
     <p>© 2025 Académie de performances — Test VAKOG (FR) • Licence MIT • Aucune donnée collectée.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha256-OqZkz1V7mGKnkPPE2eF/w3lNtIv5jJriW3o9n8o1mGo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" crossorigin="anonymous"></script>
   <script src="assets/script.js"></script>
 </body>
 </html>
